@@ -6,4 +6,5 @@ if [ "$NPM_PROXY" -ne "" ]; then
 fi
 if [ "$LIVERELOAD" -ne "n" ]; then
   NOLIVERELOAD_PARAM="--nolivereload"
+fi
   npm $PROXY_PARAMS i && ionic serve --no-open $NOLIVERELOAD_PARAM
