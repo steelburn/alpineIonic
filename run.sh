@@ -7,4 +7,4 @@ fi
 if [ "$LIVERELOAD" -ne "n" ]; then
   NOLIVERELOAD_PARAM="--nolivereload"
 fi
-  npm $PROXY_PARAMS i && ionic serve --no-open $NOLIVERELOAD_PARAM --disable-host-check
+  npm $PROXY_PARAMS i && ionic serve --no-open $NOLIVERELOAD_PARAM --disableHostCheck
