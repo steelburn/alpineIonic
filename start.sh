@@ -1,5 +1,14 @@
 #!/bin/sh
 
+# Initialization:
+# Do a clean slate & clone repo from git if $GITREPO variable is set
+if [ -z "$GITREPO" ]; then
+  echo "GITREPO variable not set. Assuming existing project is available.
+else
+  rm -rf /app/project
+  git clone $GITREPO /app/project
+fi
+
 sh ./build.sh
 
 watch -n 180 'sh build.sh' &
