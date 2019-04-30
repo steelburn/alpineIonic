@@ -3,6 +3,7 @@
 This is an Ionic docker image built based on Alpine Linux. It strives to be as small as possible.
 
 Dockerfile Repo: [https://github.com/steelburn/alpineIonic](https://github.com/steelburn/alpineIonic)
+
 Image repo: [https://hub.docker.com/r/steelburn/ionic](https://hub.docker.com/r/steelburn/ionic)
 
 ## Exposed ports
