@@ -5,11 +5,13 @@
 if [ -z "$GITREPO" ]; then
   echo "GITREPO variable not set. Assuming existing project is available."
 else
-  rm -rf /app/project
+  rm -rf /app/project/*
   git clone $GITREPO /app/project
+  npm i
+  ionic build --engine=browser
 fi
 
-sh ./build.sh
+# sh ./build.sh
 
 watch -n 180 'sh build.sh' &
 
