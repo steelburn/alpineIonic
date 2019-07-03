@@ -7,6 +7,7 @@ if [ -z "$GITREPO" ]; then
 else
   rm -rf /app/project/*
   git clone $GITREPO /app/project
+  cd /app/project
   npm i
   ionic build --engine=browser
 fi
