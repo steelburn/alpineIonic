@@ -28,5 +28,8 @@ There is a ``build.sh`` script, which will do the following:
 
 There's also a ``start.sh`` script, which is the mastermind to run ``build.sh`` and start Lighttpd HTTP server.
 
+### Script Flow
+- start.sh
+-- build.sh
 # About
 This docker image is maintained by [@steelburn](https://github.com/steelburn) ( steelburn[a]gmail[dot]com )
