@@ -3,6 +3,7 @@
 # This script should run periodically to create new builds.
 
 cd /app/project
+git stash && git stash drop
 A=$(git pull | grep -s "Already up to date." | wc -l)
 if [ "$A" == "0" ] 
   then
