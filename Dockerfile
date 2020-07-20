@@ -5,7 +5,7 @@ WORKDIR /app
 VOLUME /app/project
 RUN \
     apk add --update --no-cache \
-	nodejs npm git curl \
+	nodejs npm git python3 curl \
 	lighttpd lighttpd-mod_auth && \
     rm -rf /var/cache/apk/* && \
     npm i -g npm@latest && \
