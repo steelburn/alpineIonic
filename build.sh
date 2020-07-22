@@ -4,7 +4,7 @@
 
 cd /app/project
 git stash && git stash drop
-A=$(git pull | grep -s "Already up to date." | wc -l)
+A=$(git pull --recurse-submodules --all | grep -sE "(Already up to date.|origin/master)" | wc -l)
 if [ "$A" == "0" ] 
   then
     rm .DIRTY
