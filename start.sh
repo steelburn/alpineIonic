@@ -5,7 +5,7 @@
 if [ -z "$GITREPO" ]; then
   echo "GITREPO variable not set. Assuming existing project is available."
 else
-  rm -rf /app/project/*
+  rm -rf /app/project
   git clone --recurse-submodules $GITREPO /app/project
   cd /app/project
   npm i
