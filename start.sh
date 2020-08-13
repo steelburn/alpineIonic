@@ -1,6 +1,9 @@
 #!/bin/sh
 
 # Initialization:
+
+export PYTHON=/usr/bin/python
+
 # Do a clean slate & clone repo from git if $GITREPO variable is set
 if [ -z "$GITREPO" ]; then
   echo "GITREPO variable not set. Assuming existing project is available."

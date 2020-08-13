@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # This script should run periodically to create new builds.
+export PYTHON=/usr/bin/python
 
 cd /app/project
 git stash && git stash drop
