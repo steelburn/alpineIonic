@@ -6,8 +6,9 @@ if [ -z "$GITREPO" ]; then
   echo "GITREPO variable not set. Assuming existing project is available."
 else
   rm -rf /app/project
-  git clone --recurse-submodules $GITREPO /app/project
+  git clone --recurse-submodules --shallow-submodules --depth=1 $GITREPO /app/project
   cd /app/project
+  git submodule foreach --recursive git reset --hard
   npm i
   ionic build --engine=browser
 fi
