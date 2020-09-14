@@ -8,18 +8,26 @@ export PYTHON=/usr/bin/python
 if [ -z "$GITREPO" ]; then
   echo "GITREPO variable not set. Assuming existing project is available."
 else
-  rm -rf /app/project
+  rm -rf /app/project/*
+  rm -rf /app/project/.git
   git clone --recurse-submodules --shallow-submodules --depth=1 $GITREPO /app/project
   cd /app/project
   git submodule foreach --recursive git reset --hard
   npm i
-  ionic build --engine=browser
 fi
 
-# sh ./build.sh
-
-tail -F /var/log/lighttpd/access.log 2>/dev/null & 
-tail -F /var/log/lighttpd/error.log 2>/dev/null 1>&2 &
-lighttpd -D -f /etc/lighttpd/lighttpd.conf &
+# Now, choose whether to build and let lighttpd serve, or serve using `ng serve`:
+if [ "$SERVE" == "true" ]; then
+  if [ "$SSL" == "true" ]; then
+    PARAM=--ssl
+  fi
+  ionic serve --external --disableHostCheck $PARAM &
+else
+  ionic build --engine=browser
+  tail -F /var/log/lighttpd/access.log 2>/dev/null & 
+  tail -F /var/log/lighttpd/error.log 2>/dev/null 1>&2 &
+  lighttpd -D -f /etc/lighttpd/lighttpd.conf &
+fi
 
 sleep 10m && watch -n 180 'sh /app/build.sh'
+
