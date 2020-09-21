@@ -22,12 +22,12 @@ if [ "$SERVE" == "true" ]; then
     PARAM=--ssl
 # Check that the KEY & CERT files exist and readable
     if [ -r $KEYPATH ]; then
-      PARAM="$PARAM --key-path=$KEYPATH"
+      PARAM="$PARAM -- --key-path=$KEYPATH"
       echo KEYPATH is available, so PARAM=$PARAM
-    fi
-    if [ -r $CERTPATH ]; then
-      PARAM="$PARAM --cert-path=$CERTPATH"
-      echo CERTPATH is available, so PARAM=$PARAM
+      if [ -r $CERTPATH ]; then
+        PARAM="$PARAM --cert-path=$CERTPATH"
+        echo CERTPATH is available, so PARAM=$PARAM
+      fi
     fi
   fi
   ionic serve --external --disableHostCheck $PARAM &
