@@ -31,6 +31,7 @@ if [ "$SERVE" == "true" ]; then
     fi
   fi
   ionic serve --external --disableHostCheck $PARAM &
+  echo 'ionic serve' run with parameter '$PARAM'
 else
   ionic build --engine=browser
   tail -F /var/log/lighttpd/access.log 2>/dev/null & 
