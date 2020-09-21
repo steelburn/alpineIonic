@@ -20,10 +20,11 @@ fi
 if [ "$SERVE" == "true" ]; then
   if [ "$SSL" == "true" ]; then
     PARAM=--ssl
-    if [ "$KEYPATH" -ne "" ]; then
+# Check that the KEY & CERT files exist and readable
+    if [ -r $KEYPATH ]; then
       PARAM=$PARAM --key-path=$KEYPATH
     fi
-    if [ "$CERTPATH" -ne "" ]; then
+    if [ -r $CERTPATH ]; then
       PARAM=$PARAM --cert-path=$CERTPATH
     fi
   fi
