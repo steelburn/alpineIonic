@@ -2,6 +2,8 @@
 
 ``docker pull steelburn/ionic``
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
 ## Introduction
 
 This is an Ionic docker image built based on Alpine Linux. It strives to be as small as possible. In recent image, I've changed the webserver from built-in HTTP server to Lighttpd.
@@ -15,6 +17,7 @@ This is an Ionic docker image built based on Alpine Linux. It strives to be as s
 |80 | HTTP port |
 | 8100| Ionic HTTP serving port (``SERVE=true``)|
 | 35729 | Live reload port (deprecated)|
+
 
 ## How to use this container image?
 Command line:
@@ -30,7 +33,7 @@ The script will automatically clone & run ``npm install`` and ``ionic build`` of
 
 By default, once built, the code will be served by *lighttpd*. However, in certain cases, you may want to let it use built-in ``ng serve``. This is achievable by passing ``SERVE`` variable to ``true``.
 
-Enable experimental SSL mode by passing an additional ``SSL`` variable, set to ``true``.
+Enable experimental SSL mode by passing an additional ``SSL`` variable, set to ``true``. By passing ``SSL=true``, you can also pass ``KEYPATH`` variable pointing to private key file; and ``CERTPATH`` variable, pointing to certificate file.
 
 ### What the container will run?
 There is a ``build.sh`` script, which will do the following:

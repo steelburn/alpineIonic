@@ -20,6 +20,12 @@ fi
 if [ "$SERVE" == "true" ]; then
   if [ "$SSL" == "true" ]; then
     PARAM=--ssl
+    if [ "$KEYPATH" -ne "" ]; then
+      PARAM=$PARAM --key-path=$KEYPATH
+    fi
+    if [ "$CERTPATH" -ne "" ]; then
+      PARAM=$PARAM --cert-path=$CERTPATH
+    fi
   fi
   ionic serve --external --disableHostCheck $PARAM &
 else
