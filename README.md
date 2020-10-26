@@ -33,6 +33,8 @@ The script will automatically clone & run ``npm install`` and ``ionic build`` of
 
 By default, once built, the code will be served by *lighttpd*. However, in certain cases, you may want to let it use built-in ``ng serve``. This is achievable by passing ``SERVE`` variable to ``true``.
 
+You can also pass ``PWA`` variable, set to ``true``. Use this if your application requires PWA registration and lighttpd or ``ng serve`` doesn't work. 
+ 
 Enable experimental SSL mode by passing an additional ``SSL`` variable, set to ``true``. By passing ``SSL=true``, you can also pass ``KEYPATH`` variable pointing to private key file; and ``CERTPATH`` variable, pointing to certificate file.
 
 ### What the container will run?

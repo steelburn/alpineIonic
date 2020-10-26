@@ -16,7 +16,12 @@ else
   npm i
 fi
 
-# Now, choose whether to build and let lighttpd serve, or serve using `ng serve`:
+# If PWA=true, then change SERVE to false:
+if [ "$PWA" == "true" ]; then
+  SERVE=false
+fi
+
+# Now, choose whether to build and let lighttpd/htt-server serve, or serve using `ng serve`:
 if [ "$SERVE" == "true" ]; then
   if [ "$SSL" == "true" ]; then
     PARAM=--ssl
@@ -34,9 +39,13 @@ if [ "$SERVE" == "true" ]; then
   echo 'ionic serve' run with parameter '$PARAM'
 else
   ionic build --engine=browser
-  tail -F /var/log/lighttpd/access.log 2>/dev/null & 
-  tail -F /var/log/lighttpd/error.log 2>/dev/null 1>&2 &
-  lighttpd -D -f /etc/lighttpd/lighttpd.conf &
+  if [ "$PWA" == "true" ]; then
+    cd www && http-server &
+  else 
+    tail -F /var/log/lighttpd/access.log 2>/dev/null & 
+    tail -F /var/log/lighttpd/error.log 2>/dev/null 1>&2 &
+    lighttpd -D -f /etc/lighttpd/lighttpd.conf &
+  fi
 fi
 
 sleep 10m && watch -n 180 'sh /app/build.sh'
