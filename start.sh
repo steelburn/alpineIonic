@@ -38,10 +38,11 @@ if [ "$SERVE" == "true" ]; then
   ionic serve --external --disableHostCheck $PARAM &
   echo 'ionic serve' run with parameter '$PARAM'
 else
-  ionic build --engine=browser
   if [ "$PWA" == "true" ]; then
-    cd www && http-server --port 8100 &
+    ionic build --engine=browser --prod
+    cd www && http-server &
   else 
+    ionic build --engine=browser
     tail -F /var/log/lighttpd/access.log 2>/dev/null & 
     tail -F /var/log/lighttpd/error.log 2>/dev/null 1>&2 &
     lighttpd -D -f /etc/lighttpd/lighttpd.conf &
