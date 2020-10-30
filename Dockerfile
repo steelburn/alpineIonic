@@ -10,7 +10,8 @@ RUN \
     rm -rf /var/cache/apk/* && \
     npm i -g npm@latest && \
     npm uninstall -g ionic && \
-    npm i -g cordova @ionic/cli
+    npm i -g cordova @ionic/cli \
+    npm i -g http-server
 EXPOSE 80 8100 35729 8080
 # HEALTHCHECK --interval=2m --timeout=5s --start-period=5m CMD curl -f http://localhost:80/ || exit 1
 
