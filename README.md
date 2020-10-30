@@ -17,6 +17,7 @@ This is an Ionic docker image built based on Alpine Linux. It strives to be as s
 |80 | HTTP port |
 | 8100| Ionic HTTP serving port (``SERVE=true``)|
 | 35729 | Live reload port (deprecated)|
+| 8080 | HTTP serving port with PWA (``PWAE=true``)|
 
 
 ## How to use this container image?
