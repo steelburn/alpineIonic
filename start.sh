@@ -40,7 +40,8 @@ if [ "$SERVE" == "true" ]; then
 else
   if [ "$PWA" == "true" ]; then
     ionic build --engine=browser --prod
-    cd www && http-server &
+    cd www && http-server & 
+    echo 'http-server' 
   else 
     ionic build --engine=browser
     tail -F /var/log/lighttpd/access.log 2>/dev/null & 
