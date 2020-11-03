@@ -1,5 +1,7 @@
 #!/bin/sh
 
+
+
 # Initialization:
 
 export PYTHON=/usr/bin/python
@@ -12,6 +14,9 @@ else
   rm -rf /app/project/.git
   git clone --recurse-submodules --shallow-submodules --depth=1 $GITREPO /app/project
   cd /app/project
+  if [[ -v GITBRANCH ]]; then
+    git switch $GITBRANCH
+  fi 
   git submodule foreach --recursive git reset --hard
   npm i
 fi
